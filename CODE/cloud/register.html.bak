@@ -1,0 +1,351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Cloud | Sign Up</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/arial.js"></script>
+<script type="text/javascript" src="js/cuf_run.js"></script>
+
+<script src="jquery.js" type="text/javascript" language="javascript"></script>
+</head>
+<body>
+<script language="javascript">
+//<!---------------------------------+
+//  Developed by Roshan Bhattarai 
+//  Visit http://roshanbh.com.np for this script and more.
+//  This notice MUST stay intact for legal use
+// --------------------------------->
+$(document).ready(function()
+{
+	$("#username").blur(function()
+	{
+		//remove all the class add the messagebox classes and start fading
+		$("#msgbox").removeClass().addClass('messagebox').text('Checking...').fadeIn("slow");
+		//check the username exists or not from ajax
+		$.post("user_availability.php",{ user_name:$(this).val() } ,function(data)
+        {
+		  if(data=='no') //if username not avaiable
+		  {
+		  	$("#msgbox").fadeTo(200,0.1,function() //start fading the messagebox
+			{ 
+			  //add message and change the class of the box and start fading
+			  $(this).html('This User name Already exists').addClass('messageboxerror').fadeTo(900,1);
+			});		
+          }
+		  else
+		  {
+		  	$("#msgbox").fadeTo(200,0.1,function()  //start fading the messagebox
+			{ 
+			  //add message and change the class of the box and start fading
+			  $(this).html('Username available to register').addClass('messageboxok').fadeTo(900,1);	
+			});
+		  }
+				
+        });
+ 
+	});
+});
+</script>
+<style type="text/css">
+body {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:11px;
+}
+.top {
+margin-bottom: 15px;
+}
+.messagebox{
+	position:relative;
+	width:100px;
+	margin-left:30px;
+	border:1px solid #c93;
+	background:#ffc;
+	padding:3px;
+}
+.messageboxok{
+	position:relative;
+	width:auto;
+	margin-left:30px;
+	border:1px solid #349534;
+	background:#C9FFCA;
+	padding:3px;
+	font-weight:bold;
+	color:#008000;
+	
+}
+.messageboxerror{
+	position:relative;
+	width:auto;
+	margin-left:30px;
+	border:1px solid #CC0000;
+	background:#F7CBCA;
+	padding:3px;
+	font-weight:bold;
+	color:#CC0000;
+}
+
+</style>
+<div class="main">
+  <div class="header">
+    <div class="header_resize">
+      <div class="logo">
+        <h1><a href="index.html">Cloud Project <small></small></a></h1>
+      </div>
+      <div class="menu_nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="active"><a class="active" href="register.html">Sign Up</a></li>
+          <li><a href="signin.html">Sign In</a></li>
+                    
+        </ul>
+      </div>
+      <div class="clr"></div>
+      <div class="htext">
+        <h2>ASSURANCE ON DATA STORAGE SECURITY IN CLOUD COMPUTING</h2>
+        <p></p>
+        <p></p>
+        <p></p>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+       
+  
+
+<div class="main">
+
+    
+      <div class="logo">
+        <h1>Registration</h1>
+      </div>
+
+
+   </div>
+		  
+		  <div class="clr"></div>
+<div class="article">
+          
+          <div class="clr"></div>
+			
+		
+<FORM name="frmSample" METHOD=POST ACTION="register.php" onSubmit="return checkdate(this.dob)">
+
+
+		  
+         <OL>
+         	<LI>User Name </br><INPUT TYPE="text" NAME="username" id="username" class="text"></LI></br>
+         	<LI>Password </br><INPUT TYPE="password"NAME="password"class="text"> </LI></br>
+			<LI>Confirm Password</br><INPUT TYPE="password"class="text" name="cpassword" onblur="return cnfpwd()"> </LI></br>
+			<LI>First Name</br><INPUT TYPE="text" NAME="firstname"class="text" onblur="return validatefName()"> </LI></br>
+			<LI>Last Name</br><INPUT TYPE="text" NAME="lastname"class="text" onblur="return validatefName()"> </LI></br>
+			<LI>Gender</br><select name="gender" class="text" >
+
+    <option value="Male">Male</option>
+
+    <option value="Female">Female</option>
+
+</select> </LI></br>
+			<LI>DOB</br><INPUT TYPE="text" NAME="dob"class="text"> EX: YYYY/MM/DD</LI></br>
+			<LI>E-mail</br><INPUT TYPE="text" NAME="email"class="text" onblur="return ValidateForm()"> </LI></br>
+			<LI>Confirm E-mail</br><INPUT TYPE="text" NAME="cemail"class="text" onblur="return cnfemail()" > </LI></br>
+			<LI>Phone </br><INPUT TYPE="text" NAME="phone"class="text" onblur="return Validate()"> </LI></br>
+			<LI>Address</br> <TEXTAREA NAME="address" ROWS="2" cols="1" class="text"></TEXTAREA> </LI></br>
+			<LI>Security Question </br><select name="securityquestion" id="sq" size="4"  class="text">
+
+    <option value="What is your mothers Median">What is your mother's Median</option>
+
+    <option value="What is yor favorite Pet">What is yor favorite Pet</option>
+
+    <option value="What is your favorite tourist place">What is your favorite tourist place</option>
+ 
+    <option value="What is your Fathers Middle name">What is your Father's Middle name</option>
+
+    <option value="Who is your favorite teacher">Who is your favorite teacher</option>
+
+</select> </LI></br>
+			<LI>Answer</br> <INPUT TYPE="text" NAME="answer"class="text"> </LI></br>
+
+			<li>
+                <input  type="image" name="imageField" id="imageField" src="images/submit.gif" class="send" />
+                
+              </li></br></br>
+         </OL>
+		 
+
+
+</FORM>
+
+<script language = "Javascript">
+
+function validatefName(){
+				
+				var namePattern = /^[A-Za-z]{3,25}$/;
+
+if( !namePattern.test(document.frmSample.firstname.value))
+
+alert("Enter valid name");
+
+
+
+}
+
+function validatelName(){
+				
+				var namePattern = /^[A-Za-z]{1,25}$/;
+
+if( !namePattern.test(document.frmSample.lastname.value))
+
+alert("Enter valid name");
+
+
+
+			}	
+
+
+
+function cnfpwd()
+{
+var password=document.frmSample.password;
+var cpassword=document.frmSample.cpassword;
+
+if (password.value != cpassword.value) { 
+   alert("Your password and confirmation password do not match.");
+   cpassword.focus();
+   return false; 
+}
+
+}
+function cnfemail()
+{
+var email=document.frmSample.email;
+var cemail=document.frmSample.cemail;
+
+if (email.value != cemail.value) { 
+   alert("Your Email and confirmation Email do not match.");
+   cemail.focus();
+   return false; 
+}
+
+}
+function checkdate(input){
+var validformat=/^\d{4}\/\d{2}\/\d{2}$/ //Basic check for format validity
+var returnval=false
+if (!validformat.test(input.value))
+alert("Invalid Date Format. Please correct and submit again.")
+else{ //Detailed check for valid date ranges
+var monthfield=input.value.split("/")[1]
+var dayfield=input.value.split("/")[2]
+var yearfield=input.value.split("/")[0]
+var dayobj = new Date(yearfield, monthfield-1, dayfield)
+if ((dayobj.getMonth()+1!=monthfield)||(dayobj.getDate()!=dayfield)||(dayobj.getFullYear()!=yearfield))
+alert("Invalid Day, Month, or Year range detected. Please correct and submit again.")
+else
+returnval=true
+}
+if (returnval==false) input.select()
+return returnval
+}
+
+
+ function Validate()
+{
+        var x = document.frmSample.phone.value;
+       
+         if(isNaN(x)|| x.indexOf(" ")!=-1){
+              alert("Enter numeric value");return false; }
+        if (x.length > 12 || x.length < 10 ){
+                alert("Enter 10 or 12 characters"); return false;
+           }
+        
+}
+
+function echeck(str) {
+
+		var at="@"
+		var dot="."
+		var lat=str.indexOf(at)
+		var lstr=str.length
+		var ldot=str.indexOf(dot)
+		if (str.indexOf(at)==-1){
+		   alert("Invalid E-mail ID")
+		   return false
+		}
+
+		if (str.indexOf(at)==-1 || str.indexOf(at)==0 || str.indexOf(at)==lstr){
+		   alert("Invalid E-mail ID")
+		   return false
+		}
+
+		if (str.indexOf(dot)==-1 || str.indexOf(dot)==0 || str.indexOf(dot)==lstr){
+		    alert("Invalid E-mail ID")
+		    return false
+		}
+
+		 if (str.indexOf(at,(lat+1))!=-1){
+		    alert("Invalid E-mail ID")
+		    return false
+		 }
+
+		 if (str.substring(lat-1,lat)==dot || str.substring(lat+1,lat+2)==dot){
+		    alert("Invalid E-mail ID")
+		    return false
+		 }
+
+		 if (str.indexOf(dot,(lat+2))==-1){
+		    alert("Invalid E-mail ID")
+		    return false
+		 }
+		
+		 if (str.indexOf(" ")!=-1){
+		    alert("Invalid E-mail ID")
+		    return false
+		 }
+
+ 		 return true					
+	}
+
+function ValidateForm(){
+	var emailID=document.frmSample.email;
+	
+	if ((emailID.value==null)||(emailID.value=="")){
+		alert("Please Enter your Email ID")
+		emailID.focus()
+		return false
+	}
+	if (echeck(emailID.value)==false){
+		emailID.value=""
+		emailID.focus()
+		return false
+	}
+	return true
+ }
+</script>
+
+
+        </div>
+      </div>
+     
+      <div class="clr"></div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="fbg">
+    <div class="fbg_resize">
+	<p class="lf">&copy; Copyright ->ASSURANCE ON DATA STORAGE SECURITY IN CLOUD COMPUTING.</p>
+     </div>
+	 </div>
+      
+  </div>
+</div>
+</body>
+</html>

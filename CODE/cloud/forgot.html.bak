@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Cloud | Forgot Password</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/arial.js"></script>
+<script type="text/javascript" src="js/cuf_run.js"></script>
+</head>
+<body>
+
+<div class="main">
+  <div class="header">
+    <div class="header_resize">
+      <div class="logo">
+        <h1><a href="index.html">Cloud Project <small></small></a></h1>
+      </div>
+      <div class="menu_nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="register.html">Sign Up</a></li>
+          <li><a href="signin.html">Sign In</a></li>
+                    
+        </ul>
+      </div>
+      <div class="clr"></div>
+      <div class="htext">
+        <h2>ASSURANCE ON DATA STORAGE SECURITY IN CLOUD COMPUTING</h2>
+        <p></p>
+        <p></p>
+        <p></p>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+       
+  
+
+<div class="main">
+
+    
+      <div class="logo">
+        <h1>Forgot Password</h1>
+      </div>
+
+
+   </div>
+		  
+		  <div class="clr"></div>
+<div class="article">
+          
+          <div class="clr"></div>
+			
+		
+<FORM name="frmSample" METHOD=POST ACTION="forgot.php" onSubmit="return checkdate(this.dob)">
+
+
+		  
+         <OL>
+         	<LI>E-mail </br><INPUT TYPE="text" NAME="email"class="text" onblur="return ValidateForm()"></LI></br>
+			<LI>Phone </br><INPUT TYPE="text" NAME="phone"class="text" onblur="return Validate()"> </LI></br>
+         	<LI>DOB </br><INPUT TYPE="text"NAME="dob"class="text">EX: YYYY/MM/DD </LI></br>
+
+			
+
+			<li>
+                <input  type="image" name="imageField" id="imageField" src="images/submit.gif" class="send" />
+                
+              </li></br></br>
+         </OL>
+		 
+
+
+</FORM>
+
+
+
+<script language = "Javascript">
+
+function validatefName(){
+				
+				var namePattern = /^[A-Za-z]{3,25}$/;
+
+if( !namePattern.test(document.frmSample.firstname.value))
+
+alert("Enter valid name");
+
+
+
+}
+
+function validatelName(){
+				
+				var namePattern = /^[A-Za-z]{1,25}$/;
+
+if( !namePattern.test(document.frmSample.lastname.value))
+
+alert("Enter valid name");
+
+
+
+			}	
+
+
+
+function cnfpwd()
+{
+var password=document.frmSample.password;
+var cpassword=document.frmSample.cpassword;
+
+if (password.value != cpassword.value) { 
+   alert("Your password and confirmation password do not match.");
+   cpassword.focus();
+   return false; 
+}
+
+}
+function cnfemail()
+{
+var email=document.frmSample.email;
+var cemail=document.frmSample.cemail;
+
+if (email.value != cemail.value) { 
+   alert("Your Email and confirmation Email do not match.");
+   cemail.focus();
+   return false; 
+}
+
+}
+function checkdate(input){
+var validformat=/^\d{4}\/\d{2}\/\d{2}$/ //Basic check for format validity
+var returnval=false
+if (!validformat.test(input.value))
+alert("Invalid Date Format. Please correct and submit again.")
+else{ //Detailed check for valid date ranges
+var monthfield=input.value.split("/")[1]
+var dayfield=input.value.split("/")[2]
+var yearfield=input.value.split("/")[0]
+var dayobj = new Date(yearfield, monthfield-1, dayfield)
+if ((dayobj.getMonth()+1!=monthfield)||(dayobj.getDate()!=dayfield)||(dayobj.getFullYear()!=yearfield))
+alert("Invalid Day, Month, or Year range detected. Please correct and submit again.")
+else
+returnval=true
+}
+if (returnval==false) input.select()
+return returnval
+}
+
+
+ function Validate()
+{
+        var x = document.frmSample.phone.value;
+       
+         if(isNaN(x)|| x.indexOf(" ")!=-1){
+              alert("Enter numeric value");return false; }
+        if (x.length > 12 || x.length < 10 ){
+                alert("Enter 10 or 12 characters"); return false;
+           }
+        
+}
+
+function echeck(str) {
+
+		var at="@"
+		var dot="."
+		var lat=str.indexOf(at)
+		var lstr=str.length
+		var ldot=str.indexOf(dot)
+		if (str.indexOf(at)==-1){
+		   alert("Invalid E-mail ID")
+		   return false
+		}
+
+		if (str.indexOf(at)==-1 || str.indexOf(at)==0 || str.indexOf(at)==lstr){
+		   alert("Invalid E-mail ID")
+		   return false
+		}
+
+		if (str.indexOf(dot)==-1 || str.indexOf(dot)==0 || str.indexOf(dot)==lstr){
+		    alert("Invalid E-mail ID")
+		    return false
+		}
+
+		 if (str.indexOf(at,(lat+1))!=-1){
+		    alert("Invalid E-mail ID")
+		    return false
+		 }
+
+		 if (str.substring(lat-1,lat)==dot || str.substring(lat+1,lat+2)==dot){
+		    alert("Invalid E-mail ID")
+		    return false
+		 }
+
+		 if (str.indexOf(dot,(lat+2))==-1){
+		    alert("Invalid E-mail ID")
+		    return false
+		 }
+		
+		 if (str.indexOf(" ")!=-1){
+		    alert("Invalid E-mail ID")
+		    return false
+		 }
+
+ 		 return true					
+	}
+
+function ValidateForm(){
+	var emailID=document.frmSample.email;
+	
+	if ((emailID.value==null)||(emailID.value=="")){
+		alert("Please Enter your Email ID")
+		emailID.focus()
+		return false
+	}
+	if (echeck(emailID.value)==false){
+		emailID.value=""
+		emailID.focus()
+		return false
+	}
+	return true
+ }
+</script>
+
+        </div>
+      </div>
+     
+      <div class="clr"></div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="fbg">
+    <div class="fbg_resize">
+	<p class="lf">&copy; Copyright ->ASSURANCE ON DATA STORAGE SECURITY IN CLOUD COMPUTING.</p>
+     </div>
+	 </div>
+      
+  </div>
+</div>
+</body>
+</html>
